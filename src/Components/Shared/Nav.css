@@ -1,0 +1,179 @@
+/* --- Navbar Base --- */
+.navbar {
+  height: 100px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* --- Logo Styling & Secret Gateway Fix --- */
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  cursor: pointer;
+  /* Important for the long-press feature */
+  user-select: none; 
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; /* Prevents context menu on iPhone */
+}
+
+.nav-logo-img {
+  height: 160px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.22s ease;
+  pointer-events: none; /* Allows the container to handle the long-press */
+}
+
+.nav-logo-container:hover .nav-logo-img {
+  transform: scale(1.05);
+}
+
+/* --- Hamburger Styling --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 32px;
+  height: 4px;
+  background-color: #0f172a;
+  transition: 0.3s ease;
+  border-radius: 10px;
+}
+
+/* --- MOBILE VIEW (Phone & Tablet) --- */
+@media (max-width: 768px) {
+  .navbar {
+    height: 90px;
+  }
+
+  .nav-logo-img {
+    height: 170px;
+    max-height: 180px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hamburger to X Animation */
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    list-style: none;
+  }
+
+  .nav-links.open {
+    max-height: 650px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 22px 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .nav-auth-desktop {
+    display: none;
+  }
+
+  .nav-btn-mobile {
+    background: #FF8C00;
+    color: white !important;
+    padding: 16px 60px;
+    border-radius: 14px;
+    display: inline-block;
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+}
+
+/* --- DESKTOP VIEW --- */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 1.08rem;
+  }
+
+  .nav-links a:hover {
+    color: #FF8C00;
+  }
+
+  .mobile-only-item {
+    display: none;
+  }
+
+  .nav-btn {
+    background: #FF8C00;
+    color: white;
+    padding: 14px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: 0.3s ease;
+  }
+  
+  .nav-btn:hover {
+    background: #e67e00;
+    transform: translateY(-2px);
+  }
+}

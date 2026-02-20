@@ -1,0 +1,304 @@
+/* =========================================
+   FULL VIEWPORT & GLOBAL FIXES
+========================================= */
+.live-rates-page {
+  min-height: calc(100dvh - 140px);   /* Matches the navbar height (140px) */
+  width: 100%;
+  background: #fcfcfd;
+  padding: 60px 5% 80px;
+  box-sizing: border-box;
+}
+
+/* Container */
+.rates-container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.rates-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.ping {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+  position: relative;
+}
+
+.ping::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+.rates-hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff8c00, #ff5f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rates-hero p {
+  color: #64748b;
+  font-size: 1.15rem;
+  max-width: 620px;
+}
+
+.rates-table-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  border: 1px solid #f1f5f9;
+  overflow: hidden;
+}
+
+.table-wrapper {
+  overflow-x: auto;           /* Horizontal scroll on mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+.rates-table {
+  width: 100%;
+  min-width: 720px;           /* Prevents squeezing too much */
+  border-collapse: collapse;
+}
+
+.rates-table th {
+  background: #f8fafc;
+  padding: 18px 20px;
+  text-align: left;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.rates-table td {
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.asset-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.asset-icon {
+  font-size: 1.8rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border-radius: 12px;
+}
+
+.asset-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.asset-name {
+  font-weight: 800;
+  color: #1e293b;
+  font-size: 1.05rem;
+}
+
+.asset-symbol {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.price {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.buy  { color: #10b981; }
+.sell { color: #1e293b; }
+
+.change {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.change.positive { color: #10b981; }
+.change.negative { color: #ef4444; }
+.change.neutral  { color: #64748b; }
+
+.trade-action-btn {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.trade-action-btn:hover {
+  background: linear-gradient(135deg, #FF8C00 0%, #FF5F00 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.3);
+}
+
+/* Disclaimer */
+.rates-disclaimer {
+  margin-top: 40px;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.contact-link {
+  background: none;
+  border: none;
+  color: #FF8C00;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 1024px) {
+  .live-rates-page {
+    padding: 50px 4% 60px;
+  }
+  
+  .rates-hero h1 {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .rates-hero {
+    margin-bottom: 40px;
+  }
+
+  .rates-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .rates-hero p {
+    font-size: 1rem;
+  }
+
+  /* Hide change column on small screens */
+  .change-header,
+  .change {
+    display: none;
+  }
+
+  .rates-table th,
+  .rates-table td {
+    padding: 16px 12px;
+  }
+
+  .asset-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.6rem;
+  }
+
+  /* Make the table transform into stacked cards for mobile */
+  .rates-table {
+    min-width: 0;
+    display: block;
+  }
+
+  .rates-table thead {
+    display: none; /* hide header row */
+  }
+
+  .rates-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rates-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+    border: 1px solid #f1f5f9;
+    margin: 0; /* handled by gap on tbody */
+  }
+
+  .rates-table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-bottom: none;
+  }
+
+  .asset-cell { gap: 12px; }
+
+  .asset-info { margin-left: 6px; }
+
+  .price { font-size: 1rem; }
+
+  .action-cell { margin-top: 6px; }
+
+  .trade-action-btn { width: 100%; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .live-rates-page {
+    padding: 40px 5% 60px;
+  }
+  
+  .trade-action-btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
