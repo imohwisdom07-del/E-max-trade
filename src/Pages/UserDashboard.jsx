@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserDashboard from '../Components/UserDashBoard';
+import UserDashboard from '../Components/UserDashboard.jsx';
 
 function UserDashboardPage() {
   const navigate = useNavigate();
