@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminDashboard from '../Components/AdminDashboard.jsx';
+import AdminDashboard from '../Components/AdminDashboard'; 
 function AdminDashboardPage() {
   return (
     <div>
